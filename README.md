@@ -27,4 +27,4 @@ Player 2 wins the game
 - 2 LEDs to indicate the turn of the player
 - 2 seven segment displays to show the count <br><br>
 
-<img src = " " width = " ">
+<img src = " https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20Game.png" width = " ">

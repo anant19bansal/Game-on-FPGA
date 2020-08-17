@@ -18,7 +18,7 @@ Player 2 wins the game
 ### Hardware used:
 - FPGA (Zynq-7000 SoC - Zedboard)
 - 7 segment LED displays <br>
-<img src = " " width = " "> <br>
+<img src = " https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20image.jpg" width = " "> <br>
 <img src = " " width = " "> <br>
 
 ### Input/Output Specifications:

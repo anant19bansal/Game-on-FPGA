@@ -1,0 +1,130 @@
+module game_321(
+    input clk,
+    input [3:0] in,
+    input rst,
+    output reg [13:0] display,
+    output led_1,
+    output led_2
+    );
+ 
+ reg flag,turn;
+ integer count=0;
+ 
+ always @ (posedge clk , posedge rst)
+ begin
+    if(rst)
+    begin
+        count <= 0;
+        turn <= 0;
+    end
+    else
+    begin    
+        if(in == 0)
+            flag <= 0;
+        else
+            flag <= 1;
+    end
+ end
+
+ always @ (posedge flag)
+ begin
+    case(in)
+    3'b001 : count <= count + 1;
+    3'b010 : count <= count + 2;
+    3'b100 : count <= count + 3;
+    default : count <= count;
+    endcase
+    
+    if(count <21)
+       turn <= ~turn;
+ end
+
+ always @ (count)
+    begin
+        if(count<21)
+        begin
+        case(count % 10)
+        0 : display[6:0] <= 7'b1111110;
+        1 : display[6:0] <= 7'b0110000;
+        2 : display[6:0] <= 7'b1101101;
+        3 : display[6:0] <= 7'b1111001;
+        4 : display[6:0] <= 7'b0110011;
+        5 : display[6:0] <= 7'b1011011;
+        6 : display[6:0] <= 7'b1101101;
+        7 : display[6:0] <= 7'b1110000;
+        8 : display[6:0] <= 7'b1111111;
+        9 : display[6:0] <= 7'b1110011;
+        default : display[6:0] <= 7'b1111110;
+        endcase
+    
+        case(count / 10)
+        0 : display[13:7] <= 7'b1111110;
+        1 : display[13:7] <= 7'b0110000;
+        2 : display[13:7] <= 7'b1101101;
+        default : display[13:7] <= 7'b1100111;
+        endcase
+        end
+        else
+        begin
+            if(turn)
+                display[13:0] <= 14'b11001110110000; 
+            else
+                display[13:0] <= 14'b11001111101101;
+        end
+    end         
+  
+ assign led_1 = turn;
+ assign led_2 = ~turn;                           
+endmodule
+
+
+
+//Testbench:- 
+
+module tb_game;
+reg [3:0]in;
+reg rst,clk;
+wire [13:0]display;
+wire led_1,led_2;
+game_321 DUT(clk,in,rst,display,led_1,led_2);
+
+initial
+begin
+    rst=0;
+    clk=0;
+    in=0;
+end
+ 
+always #1 clk = ~clk;
+
+initial
+begin
+    #10 rst=1;
+    #10 rst=0;
+    #20 in=1;
+    #5 in=0;
+    #20 in=2;
+    #5 in=0;
+    #20 in=2;
+    #5 in=0;
+    #20 in=4;
+    #5 in=0;
+    #20 in=1;
+    #5 in=0;
+    #20 in=4;
+    #5 in=0;
+    #20 in=2;
+    #5 in=0;
+    #20 in=1;
+    #5 in=0;
+    #20 in=1;
+    #5 in=0;
+    #20 in=4;
+    #5 in=0;
+    #20 in=1;
+    #5 in=0;
+    #20 in=2;
+    #5 in=0;
+    #5 $finish;
+    end
+endmodule

@@ -18,8 +18,8 @@ Player 2 wins the game
 ### Hardware used:
 - FPGA (Zynq-7000 SoC - Zedboard)
 - 7 segment LED displays <br>
-<img src = " https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20image.jpg" width = " "> <br>
-<img src = " " width = " "> <br>
+<img src = "https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20image.jpg" width = "50%"> <br><br>
+<img src = "https://github.com/anant19bansal/Game-on-FPGA/blob/master/7%20segment%20led.png" width = "30%"> <br>
 
 ### Input/Output Specifications:
 - 3 switch buttons for incrementing count by 1, 2 or 3
@@ -27,4 +27,4 @@ Player 2 wins the game
 - 2 LEDs to indicate the turn of the player
 - 2 seven segment displays to show the count <br><br>
 
-<img src = " https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20Game.png" width = " ">
+<img src = "https://github.com/anant19bansal/Game-on-FPGA/blob/master/FPGA%20Game.png" width = " ">
